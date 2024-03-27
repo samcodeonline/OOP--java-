@@ -1,16 +1,15 @@
 import java.util.*;
-    class Main
-    {
-        public static void main(String[] args)
-        {
-            Scanner sc= new Scanner(System.in);    //System.in is a standard input stream
-            System.out.print("Enter first number- ");
-            int a= sc.nextInt();
-            System.out.print("Enter second number- ");
-            int b= sc.nextInt();
-            System.out.print("Enter third number- ");
-            int c= sc.nextInt();
-            int d=a+b+c;
-            System.out.println("Total= " +d);
-        }
+
+class Main {
+    public static void main(String[] args) {
+//            int studentCount = 0;
+        System.out.print("How many students: ");
+        Scanner student_count = new Scanner(System.in);
+        int total_student = student_count.nextInt();
+        int[] marks = new int[total_student];
     }
+}
+
+
+
+
