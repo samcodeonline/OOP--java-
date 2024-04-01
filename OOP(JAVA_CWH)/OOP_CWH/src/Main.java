@@ -4,20 +4,20 @@ import java.io.ObjectOutputStream;
 import java.util.*;
 import java.io.*;
 
-class Employee implements Serializable{
-    int empno;
-    String ename;
-    int salary;
+class Student implements Serializable{
+    int serialNumber;
+    String studentName;
+    String studentUserName;
 
-    Employee(int empno, String ename, int salary){
-        this.empno = empno;
-        this.ename = ename;
-        this.salary = salary;
+    Student(int serialNumber, String studentName, String studentUserName){
+        this.serialNumber = serialNumber;
+        this.studentName = studentName;
+        this.studentUserName = studentUserName;
     }
 
     @Override
     public String toString() {
-        return empno + " " + ename + " " + salary;
+        return serialNumber + " " + studentName + " " + studentUserName;
     }
 }
 public class Main {
@@ -25,15 +25,15 @@ public class Main {
          int choice = -1;
          Scanner s = new Scanner(System.in);
          Scanner s1 = new Scanner(System.in);
-         File file = new File("employee.txt");
-         ArrayList<Employee> al = new ArrayList<Employee>();
+         File file = new File("Student.txt");
+         ArrayList<Student> al = new ArrayList<Student>();
          ObjectOutputStream oos = null;
          ObjectInputStream ois = null;
          ListIterator li = null;
 
          if(file.isFile()){
              ois = new ObjectInputStream(new FileInputStream(file));
-             al = (ArrayList<Employee>) ois.readObject();
+             al = (ArrayList<Student>) ois.readObject();
              ois.close();
          }
          do{
@@ -49,17 +49,17 @@ public class Main {
 
              switch (choice){
                  case 1:
-                     System.out.println("Enter how many employees you want");
+                     System.out.println("Enter how many Students you want");
                      int n = s.nextInt();
                      for(int i = 0 ; i < n ; i++) {
-                         System.out.print ("Enter Employee No: ");
-                         int empno = s.nextInt();
-                         System.out.print ("Enter Employee Name: ");
-                         String empname = s1.nextLine();
-                         System.out.print ("Enter Employee salary: ");
-                         int salary = s.nextInt();
+                         System.out.print ("Enter Student No: ");
+                         int serialNumber = s.nextInt();
+                         System.out.print ("Enter Student Name: ");
+                         String studentName = s1.nextLine();
+                         System.out.print ("Enter Student studentUserName: ");
+                         String studentUserName = s1.nextLine();
 
-                         al.add(new Employee(empno, empname, salary));
+                         al.add(new Student(serialNumber, studentName, studentUserName));
                      }
                      oos = new ObjectOutputStream(new FileOutputStream(file));
                      oos.writeObject(al);
@@ -68,13 +68,14 @@ public class Main {
                  case 2:
                      if(file.isFile()){
                      ois = new ObjectInputStream(new FileInputStream(file));
-                     al = (ArrayList<Employee>) ois.readObject();
+                     al = (ArrayList<Student>) ois.readObject();
                      ois.close();
                      System.out.println("-----------------------------------");
                      li = al.listIterator();
-                     while(li.hasNext())
+                     while(li.hasNext()) {
                          System.out.println(li.next());
                          System.out.println("-----------------------------------");
+                     }
                      }else{
                          System.out.println("File not found");
                      }
@@ -83,24 +84,26 @@ public class Main {
                      if(file.isFile()){
 
                          ois = new ObjectInputStream(new FileInputStream(file));
-                         al = (ArrayList<Employee>) ois.readObject();
+                         al = (ArrayList<Student>) ois.readObject();
                          ois.close();
 
                      boolean found = false;
-                     System.out.println("Enter empno to Search: ");
-                     int empno = s.nextInt();
+                     System.out.println("Enter serialNumber to Search: ");
+                     int serialNumber = s.nextInt();
                      System.out.println("-----------------------------------");
                      li = al.listIterator();
                      while(li.hasNext()){
-                         Employee e = (Employee) li.next();
-                         if(e.empno == empno){
+                         Student e = (Student) li.next();
+                         if(e.serialNumber == serialNumber){
                              System.out.println(e);
                              found = true;
                          }
                      }
-                         if(!found)
+                         System.out.println("---------------------------------");
+                         if(!found){
                              System.out.println("Record Not Found...!");
                              System.out.println("-----------------------------------");
+                         }
                      }else {
                          System.out.println("File Not Found");
                      }
@@ -109,17 +112,17 @@ public class Main {
                      if(file.isFile()){
 
                          ois = new ObjectInputStream(new FileInputStream(file));
-                         al = (ArrayList<Employee>) ois.readObject();
+                         al = (ArrayList<Student>) ois.readObject();
                          ois.close();
 
                          boolean found = false;
-                         System.out.println("Enter empno to Delete: ");
-                         int empno = s.nextInt();
+                         System.out.println("Enter serialNumber to Delete: ");
+                         int serialNumber = s.nextInt();
                          System.out.println("-----------------------------------");
                          li = al.listIterator();
                          while(li.hasNext()){
-                             Employee e = (Employee) li.next();
-                             if(e.empno == empno){
+                             Student e = (Student) li.next();
+                             if(e.serialNumber == serialNumber){
                                  li.remove();
                                  found = true;
                              }
@@ -143,22 +146,22 @@ public class Main {
                      if(file.isFile()){
 
                          ois = new ObjectInputStream(new FileInputStream(file));
-                         al = (ArrayList<Employee>) ois.readObject();
+                         al = (ArrayList<Student>) ois.readObject();
                          ois.close();
 
                          boolean found = false;
-                         System.out.println("Enter empno to Update: ");
-                         int empno = s.nextInt();
+                         System.out.println("Enter serialNumber to Update: ");
+                         int serialNumber = s.nextInt();
                          System.out.println("-----------------------------------");
                          li = al.listIterator();
                          while(li.hasNext()){
-                             Employee e = (Employee) li.next();
-                             if(e.empno == empno){
-                                 System.out.println("Enter New Employee : ");
-                                 String ename = s1.nextLine();
-                                 System.out.print("Enter new Salary: ");
-                                 int sal = s.nextInt();
-                                 li.set(new Employee(empno,ename,sal));
+                             Student e = (Student) li.next();
+                             if(e.serialNumber == serialNumber){
+                                 System.out.println("Enter New Student : ");
+                                 String studentName = s1.nextLine();
+                                 System.out.print("Enter new studentUserName: ");
+                                 String studentUserName = s1.nextLine();
+                                 li.set(new Student(serialNumber,studentName,studentUserName));
                                  found = true;
                              }
                          }
