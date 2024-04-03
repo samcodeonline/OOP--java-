@@ -81,34 +81,6 @@ public class Main {
                     }
                     break;
 
-                    /*
-                     if (file.isFile()) {
-        ois = new ObjectInputStream(new FileInputStream(file));
-        al = (ArrayList<Student>) ois.readObject();
-        ois.close();
-
-        boolean found = false;
-        System.out.println("Enter serialNumber to Search: ");
-        int serialNumber = s.nextInt();
-        System.out.println("-----------------------------------");
-        li = al.listIterator();
-        while (li.hasNext()) {
-            Student e = (Student) li.next();
-            if (e.serialNumber == serialNumber) {
-                System.out.println(e);
-                found = true;
-                break;  // Exit the loop if found
-            }
-        }
-        System.out.println("---------------------------------");
-        if (!found) {
-            System.out.println("Record Not Found...!");
-        }
-    } else {
-        System.out.println("File Not Found");
-    }
-    break;
-                    *  */
                 case 3:
                     if(studentFile.isFile()) {
                         object_input_stream = new ObjectInputStream(new FileInputStream(studentFile));
