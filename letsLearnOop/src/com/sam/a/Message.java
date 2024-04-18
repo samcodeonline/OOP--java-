@@ -8,4 +8,6 @@ public class Message {
     public static void message() {
         System.out.println("how are you");
     }
+
+    String name = "samcodeonline";
 }
