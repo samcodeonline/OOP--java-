@@ -1,7 +1,6 @@
-package com.sam.Problems;
+package com.sam.Problems.OOP;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class Book {
 

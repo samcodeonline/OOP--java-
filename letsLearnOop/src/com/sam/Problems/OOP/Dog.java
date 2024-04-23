@@ -1,4 +1,4 @@
-package com.sam.Problems;
+package com.sam.Problems.OOP;
 
 public class Dog {
     private String name;
