@@ -1,10 +1,37 @@
 package com.sam.Problems.OOP;//Library.java
+
 import java.util.ArrayList;
+
 class Library {
-    private final ArrayList < Book > books;
+    private final ArrayList<Book> books;
 
     public Library() {
-        books = new ArrayList < Book > ();
+        books = new ArrayList<Book>();
+    }
+
+    public static void main(String[] args) {
+        Library library = new Library();
+
+        Book book1 = new Book("Adventures of Tom Sawyer", "Mark Twain");
+        Book book2 = new Book("Ben Hur", "Lewis Wallace");
+        Book book3 = new Book("Time Machine", "H.G. Wells");
+        Book book4 = new Book("Anna Karenina", "Leo Tolstoy");
+
+        library.addBook(book1);
+        library.addBook(book2);
+        library.addBook(book3);
+        library.addBook(book4);
+
+        System.out.println("Books in the library:");
+        for (Book book : library.getBooks()) {
+            System.out.println(book.getTitle() + " by " + book.getAuthor());
+        }
+
+        library.removeBook(book2);
+        System.out.println("\nBooks in the library after removing " + book2.getTitle() + ":");
+        for (Book book : library.getBooks()) {
+            System.out.println(book.getTitle() + " by " + book.getAuthor());
+        }
     }
 
     public void addBook(Book book) {
@@ -15,9 +42,12 @@ class Library {
         books.remove(book);
     }
 
-    public ArrayList < Book > getBooks() {
+    public ArrayList<Book> getBooks() {
         return books;
     }
+
+    //Main.java
+
     //Book.java
     static class Book {
         private String title;
@@ -44,31 +74,4 @@ class Library {
             this.author = author;
         }
     }
-
-    //Main.java
-
-        public static void main(String[] args) {
-            Library library = new Library();
-
-            Book book1 = new Book("Adventures of Tom Sawyer", "Mark Twain");
-            Book book2 = new Book("Ben Hur", "Lewis Wallace");
-            Book book3 = new Book("Time Machine", "H.G. Wells");
-            Book book4 = new Book("Anna Karenina", "Leo Tolstoy");
-
-            library.addBook(book1);
-            library.addBook(book2);
-            library.addBook(book3);
-            library.addBook(book4);
-
-            System.out.println("Books in the library:");
-            for (Book book: library.getBooks()) {
-                System.out.println(book.getTitle() + " by " + book.getAuthor());
-            }
-
-            library.removeBook(book2);
-            System.out.println("\nBooks in the library after removing " + book2.getTitle() + ":");
-            for (Book book: library.getBooks()) {
-                System.out.println(book.getTitle() + " by " + book.getAuthor());
-            }
-        }
 }
