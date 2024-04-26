@@ -1,22 +1,20 @@
 package com.sam.a;
 
 public class ConstructorBeh {
-    int num;
+    String name;
+    int age;
+    String skinColor;
 
-    public ConstructorBeh(int num) {
-        this.num = num;
+    public ConstructorBeh(String name, int age, String skinColor) {
+        this.name = name;
+        this.age = age;
+        this.skinColor = skinColor;
     }
-
-    @Override
-    public String toString() {
-        return "samcodeonline {" +
-                "num = " + num +
-                '}';
-    }
-
-
     public static void main(String[] args) {
-        ConstructorBeh number = new ConstructorBeh(33);
-        System.out.println(number );
+         ConstructorBeh personOne = new ConstructorBeh("sam",33,"lightBrown");
+         ConstructorBeh personTwo = new ConstructorBeh("david",12,"darkBrown");
+
+        System.out.println(personOne.name+" "+personOne.age+" "+personOne.skinColor);
+        System.out.println(personTwo);
     }
 }

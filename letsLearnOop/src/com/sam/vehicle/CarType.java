@@ -12,6 +12,4 @@ class CarType extends Car {
         car.honk();
         System.out.println(carType);
     }
-
-
 }
